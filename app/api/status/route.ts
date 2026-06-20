@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readStatus, writeStatus } from '@/lib/store'
+import { readStatus, writeStatus, writeMeta } from '@/lib/store'
 import { getStatus, STATUSES } from '@/lib/statuses'
 
 export const dynamic = 'force-dynamic'
@@ -13,6 +13,8 @@ export async function GET() {
     emoji: def.emoji,
     mood: def.mood,
     updatedAt: record.updatedAt,
+    location: record.location ?? null,
+    battery: record.battery ?? null,
   })
 }
 
@@ -30,24 +32,38 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  let body: { status?: string }
+  let body: { status?: string; location?: string; battery?: number }
   try {
     body = await req.json()
   } catch {
-    // Allow Shortcuts to also send the key as a query param, since
-    // building a JSON body in the Shortcuts app is an extra step.
-    body = { status: new URL(req.url).searchParams.get('status') ?? undefined }
+    const params = new URL(req.url).searchParams
+    body = {
+      status: params.get('status') ?? undefined,
+      location: params.get('location') ?? undefined,
+      battery: params.get('battery') ? Number(params.get('battery')) : undefined,
+    }
   }
 
-  const key = body.status
-  if (!key || !STATUSES[key]) {
-    return NextResponse.json(
-      { error: `Unknown status "${key}". Valid keys: ${Object.keys(STATUSES).join(', ')}` },
-      { status: 400 }
-    )
+  let record
+
+  if (body.status) {
+    if (!STATUSES[body.status]) {
+      return NextResponse.json(
+        { error: `Unknown status "${body.status}". Valid keys: ${Object.keys(STATUSES).join(', ')}` },
+        { status: 400 }
+      )
+    }
+    record = await writeStatus(body.status, {
+      location: body.location,
+      battery: body.battery,
+    })
+  } else {
+    record = await writeMeta({
+      location: body.location,
+      battery: body.battery,
+    })
   }
 
-  const record = await writeStatus(key)
   const def = getStatus(record.key)
   return NextResponse.json({
     key: def.key,
@@ -55,5 +71,7 @@ export async function POST(req: NextRequest) {
     emoji: def.emoji,
     mood: def.mood,
     updatedAt: record.updatedAt,
+    location: record.location ?? null,
+    battery: record.battery ?? null,
   })
 }
