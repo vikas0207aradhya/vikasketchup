@@ -13,12 +13,17 @@ export interface StatusDef {
 export const STATUSES: Record<string, StatusDef> = {
   sleeping: { key: 'sleeping', label: 'Sleeping', emoji: '😴', mood: 'rest', source: 'auto' },
   driving: { key: 'driving', label: 'Driving', emoji: '🚗', mood: 'active', source: 'auto' },
+  biking: { key: 'biking', label: 'Riding my bike', emoji: '🏍️', mood: 'active', source: 'auto' },
+  listening: { key: 'listening', label: 'Listening to songs', emoji: '🎧', mood: 'focus', source: 'auto' },
   scrolling: { key: 'scrolling', label: 'Scrolling', emoji: '📱', mood: 'social', source: 'manual' },
   coding: { key: 'coding', label: 'Shipping code', emoji: '💻', mood: 'focus', source: 'manual' },
   gym: { key: 'gym', label: 'At the gym', emoji: '🏋️', mood: 'active', source: 'manual' },
   eating: { key: 'eating', label: 'Eating', emoji: '🍽️', mood: 'social', source: 'manual' },
   gaming: { key: 'gaming', label: 'Gaming', emoji: '🎮', mood: 'social', source: 'manual' },
   reading: { key: 'reading', label: 'Reading', emoji: '📖', mood: 'focus', source: 'manual' },
+  outside: { key: 'outside', label: 'Outside with friends', emoji: '🌆', mood: 'social', source: 'manual' },
+  smoking: { key: 'smoking', label: 'Smoking', emoji: '🚬', mood: 'social', source: 'manual' },
+  drinking: { key: 'drinking', label: 'Drinking with friends', emoji: '🍻', mood: 'social', source: 'manual' },
   online: { key: 'online', label: 'Online', emoji: '🟢', mood: 'active', source: 'manual' },
   afk: { key: 'afk', label: 'AFK', emoji: '🚪', mood: 'rest', source: 'manual' },
 }
