@@ -2,10 +2,9 @@ import LiveStatusBadge from '@/components/LiveStatusBadge'
 import ParticleField from '@/components/ParticleField'
 
 const LINKS = [
-  { label: 'GitHub', href: 'https://github.com/vikasketchup', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/vikasketchup', icon: 'linkedin' },
-  { label: 'Twitter', href: 'https://twitter.com/vikasketchup', icon: 'twitter' },
-  { label: 'Email', href: 'mailto:hello@vikasketchup.com', icon: 'mail' },
+  { label: 'GitHub', href: 'https://github.com/vikas0207aradhya', icon: 'github' },
+  { label: 'Instagram', href: 'https://instagram.com/vikasketchup', icon: 'instagram' },
+  { label: 'Twitter', href: 'https://twitter.com/vikas_1807', icon: 'twitter' },
 ]
 
 function Icon({ name }: { name: string }) {
@@ -29,11 +28,12 @@ function Icon({ name }: { name: string }) {
           <path d="M18.9 2H22l-7.6 8.68L23.3 22h-6.96l-5.45-7.13L4.62 22H1.5l8.13-9.29L.9 2h7.13l4.93 6.52L18.9 2Zm-1.22 18h1.72L6.4 3.9H4.56L17.68 20Z" />
         </svg>
       )
-    case 'mail':
+    case 'instagram':
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={common}>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="m4 7 8 6 8-6" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
         </svg>
       )
     default:
@@ -77,16 +77,10 @@ export default function Home() {
         <div className="flex flex-1 flex-col items-center justify-center py-20 text-center">
           <h1 className="animate-rise font-display text-6xl font-medium tracking-tight text-bone sm:text-7xl">
             Vikas
-          </h1>
-
-          <p className="animate-rise tracking-label mt-5 text-sm font-medium text-ember sm:text-base">
-            PRODUCT-MINDED ENGINEER
+          <h1 className="animate-rise font-display text-6xl font-medium tracking-tight text-bone sm:text-7xl">
+            vikasketchup
             <span className="ml-1 inline-block h-[1em] w-[2px] translate-y-[2px] animate-pulse bg-ember align-middle" />
-          </p>
-
-          <p className="animate-rise tracking-label mt-2 text-xs text-muted sm:text-sm">
-            SUPPORT &amp; DATA SCIENCE @ REVOLUT
-          </p>
+          </h1>
 
           <p className="animate-rise mt-8 max-w-md text-balance text-lg leading-relaxed text-bone/90 sm:text-xl">
             I fix what&apos;s broken on the front line, then build the systems that catch it
@@ -111,7 +105,7 @@ export default function Home() {
 
         <footer className="animate-rise pb-4 text-center">
           <p className="tracking-label text-[10px] text-muted/60">
-            VIKASKETCHUP.COM — STATUS UPDATES IN REAL TIME
+            VIKASKETCHUP.COM — THIS UPDATE IS REAL TIME AUTOOMATLLY AS PER WHAT I DO 
           </p>
         </footer>
       </div>
