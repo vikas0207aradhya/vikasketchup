@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #0a0807;
+  color: #f5ece4;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(201, 138, 107, 0.35);
+  color: #f5ece4;
+}
+
+/* visible keyboard focus, kept everywhere */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #c98a6b;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.tracking-label {
+  letter-spacing: 0.22em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
